@@ -13,8 +13,6 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   const dispatch = useDispatch(); // Keep track of changes on the user slice
 
-  const iconSize = { fontSize: "25px" };
-
   const theme = React.useMemo(
     () =>
       createMuiTheme({
@@ -76,7 +74,7 @@ function App() {
       {JSON.parse(localStorage.getItem('userAuth'))===null ? ( // This is basically an if condition (ternary operator) which checks if the user exists (this user variable is fetched using useSelector which is a redux function to get the user if he is logged in)
         <Login /> // The login component is called whenever the user attribute in the slice is false i.e. when the user is logged out<>
       ) : (
-        <Home setDarkMode={setDarkMode} iconSize={iconSize} darkMode={darkMode} />
+        <Home setDarkMode={setDarkMode} darkMode={darkMode} />
       )}
     </ThemeProvider>
   );

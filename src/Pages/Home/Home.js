@@ -8,7 +8,7 @@ import { auth } from "../../firebase";
 import { IconButton } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-const Home = ({ setDarkMode, darkMode, iconSize }) => {
+const Home = ({ setDarkMode, darkMode }) => {
   const user = useSelector(selectUser); // Select the currently logged in user from the slice using redux
   const dispatch = useDispatch();
   return (
@@ -28,9 +28,9 @@ const Home = ({ setDarkMode, darkMode, iconSize }) => {
           }}
         >
           {darkMode ? (
-            <NightsStayIcon style={iconSize} />
+            <NightsStayIcon style={{fontSize: "25px"}} />
           ) : (
-            <WbSunnyRoundedIcon style={iconSize} />
+            <WbSunnyRoundedIcon style={{fontSize: "25px"}} />
           )}
         </IconButton>
         <IconButton
