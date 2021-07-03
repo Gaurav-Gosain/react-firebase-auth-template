@@ -2,7 +2,7 @@
 
 ## Setup :
 
-- Fork -> Clone/Download the repo
+- Click on the `Use this Template` button, follow the steps.
 - Run `npm install` command in the root directory of the project.
 - Create a new firebase Project
 - Enable Firebase auth -> Enable Google Authentication within firebase auth.
