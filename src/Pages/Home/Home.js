@@ -13,41 +13,47 @@ const Home = ({ setDarkMode, darkMode }) => {
   const dispatch = useDispatch();
   return (
     <>
-      <h2
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          alignItems: "center",
-        }}
-      >
-        <Avatar src={user.photoUrl} />
-        {user.displayName}
-        <IconButton
-          onClick={() => {
-            setDarkMode(!darkMode);
-          }}
-        >
-          {darkMode ? (
-            <NightsStayIcon style={{fontSize: "25px"}} />
-          ) : (
-            <WbSunnyRoundedIcon style={{fontSize: "25px"}} />
-          )}
-        </IconButton>
-        <IconButton
-          onClick={() => {
-            auth.signOut().then(() => {
-              dispatch(logout());
-              localStorage.removeItem("authLoading");
-            });
-          }}
-        >
-          <ExitToAppIcon />
-        </IconButton>
-      </h2>
-      <center>
-        <div>Email : {user.email}</div>
-        <div>UID : {user.uid}</div>
-      </center>
+      {!user ? (
+        <></>
+      ) : (
+        <>
+          <h2
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+            }}
+          >
+            <Avatar src={user.photoUrl} />
+            {user.displayName}
+            <IconButton
+              onClick={() => {
+                setDarkMode(!darkMode);
+              }}
+            >
+              {darkMode ? (
+                <NightsStayIcon style={{ fontSize: "25px" }} />
+              ) : (
+                <WbSunnyRoundedIcon style={{ fontSize: "25px" }} />
+              )}
+            </IconButton>
+            <IconButton
+              onClick={() => {
+                auth.signOut().then(() => {
+                  dispatch(logout());
+                  localStorage.removeItem("authLoading");
+                });
+              }}
+            >
+              <ExitToAppIcon />
+            </IconButton>
+          </h2>
+          <center>
+            <div>Email : {user.email}</div>
+            <div>UID : {user.uid}</div>
+          </center>
+        </>
+      )}
     </>
   );
 };
