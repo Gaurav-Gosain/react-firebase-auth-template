@@ -9,7 +9,6 @@ import { db } from "./firebase";
 import Login from "./Pages/Login/Login";
 import Home from "./Pages/Home/Home";
 function App() {
-
   const [darkMode, setDarkMode] = useState(true);
   const dispatch = useDispatch(); // Keep track of changes on the user slice
 
@@ -29,23 +28,25 @@ function App() {
       localStorage.removeItem("authLoading");
       // When the state of the user changes this function is called that is if the user logs in or out this function gets called
       console.log(userAuth);
-      userAuth ? localStorage.setItem('userAuth', JSON.stringify(userAuth))
-      : localStorage.removeItem('userAuth')
+      userAuth
+        ? localStorage.setItem("userAuth", JSON.stringify(userAuth))
+        : localStorage.removeItem("userAuth");
       if (userAuth) {
         // If user logs in, userAuth becomes true as it holds some value
         db.collection("users")
-          .where("email", "==", userAuth.email)
+          .where("uid", "==", userAuth.uid)
           .get()
           .then((querySnapshot) => {
             //This is a firebase query to get all users in the db with the name of the current user
             if (querySnapshot.size === 0) {
               // If there is none in the db, it means its the first time the user is logging in and he is added to the db
               // This if condition will only be true when the user logs in for the first time
-              if (userAuth.displayName) {
-                db.collection("users").doc(userAuth.displayName).set({
+              if (userAuth.uid) {
+                db.collection("users").doc(userAuth.uid).set({
                   name: userAuth.displayName,
                   email: userAuth.email,
                   photoUrl: userAuth.photoURL,
+                  uid: userAuth.uid,
                 });
               }
             } else {
@@ -68,15 +69,15 @@ function App() {
     });
   }, [dispatch]);
 
-  const user = useSelector(selectUser); 
+  const user = useSelector(selectUser);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {JSON.parse(localStorage.getItem('userAuth'))===null|| !user ? ( // This is basically an if condition (ternary operator) which checks if the user exists (this user variable is fetched using useSelector which is a redux function to get the user if he is logged in)
+      {JSON.parse(localStorage.getItem("userAuth")) === null ? ( // This is basically an if condition (ternary operator) which checks if the user exists (this user variable is fetched using useSelector which is a redux function to get the user if he is logged in)
         <Login /> // The login component is called whenever the user attribute in the slice is false i.e. when the user is logged out<>
       ) : (
-        <Home setDarkMode={setDarkMode} darkMode={darkMode} />
+        <>{user && <Home setDarkMode={setDarkMode} darkMode={darkMode} />}</>
       )}
     </ThemeProvider>
   );
