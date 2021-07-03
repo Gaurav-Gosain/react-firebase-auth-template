@@ -9,9 +9,7 @@
 - Replace the `firebaseConfig` variable inside `/src/firebase.js` with the firebaseConfig information for your firebase app.
 - Start the React App using the `npm start` command in the root directory of the project.
 
-
-https://user-images.githubusercontent.com/55647468/124364259-561af100-dc51-11eb-9de9-43d6af80ef22.mov
-
+![demo](https://user-images.githubusercontent.com/55647468/124364622-bc087800-dc53-11eb-9d7d-b9b10d160213.gif)
 
 # Getting Started with Create React App
 
