@@ -2,12 +2,15 @@
 
 ## Setup :
 
-- Click on the `Use this Template` button, follow the steps.
+- Click on the `Use this Template` button, follow the steps to clone this template using the name of your choice.
 - Run `npm install` command in the root directory of the project.
-- Create a new firebase Project
+- Create a new Firebase Project vio the firebase console.
 - Enable Firebase auth -> Enable Google Authentication within firebase auth.
-- Replace the `firebaseConfig` variable inside `/src/firebase.js` with the firebaseConfig information for your firebase app.
+- Enable Cloud Firestore.
+- Replace the `firebaseConfig` variable inside `/src/firebase.js` with the firebaseConfig information for your firebase web app.
 - Start the React App using the `npm start` command in the root directory of the project.
+
+![demo](https://user-images.githubusercontent.com/55647468/124364622-bc087800-dc53-11eb-9d7d-b9b10d160213.gif)
 
 # Getting Started with Create React App
 
