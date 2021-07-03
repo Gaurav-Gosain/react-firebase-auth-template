@@ -7,7 +7,7 @@
 - Create a new firebase Project
 - Enable Firebase auth -> Enable Google Authentication within firebase auth.
 - Replace the `firebaseConfig` variable inside `/src/firebase.js` with the firebaseConfig information for your firebase app.
-- Start the React App using the `npm start` command in teh root directory of the project.
+- Start the React App using the `npm start` command in the root directory of the project.
 
 # Getting Started with Create React App
 
