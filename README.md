@@ -1,3 +1,14 @@
+### A basic React Template with an implementation of Sign in with Google and redirecting to a "Home Page" using Firebase Auth and redux (to remember state). [With a Dark Mode Toggle]
+
+## Setup :
+
+- Clone/Download the repo
+- Run `npm install` command in the root directory of the project.
+- Create a new firebase Project
+- Enable Firebase auth -> Enable Google Authentication within firebase auth.
+- Replace the `firebaseConfig` variable inside `/src/firebase.js` with the firebaseConfig information for your firebase app.
+- Start the React App using the `npm start` command in teh root directory of the project.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
