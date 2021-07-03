@@ -9,7 +9,8 @@ import { db } from "./firebase";
 import Login from "./Pages/Login/Login";
 import Home from "./Pages/Home/Home";
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("Mode")));
+
   const dispatch = useDispatch(); // Keep track of changes on the user slice
 
   const theme = React.useMemo(

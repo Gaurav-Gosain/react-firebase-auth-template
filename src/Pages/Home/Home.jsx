@@ -25,6 +25,7 @@ const Home = ({ setDarkMode, darkMode }) => {
         <IconButton
           onClick={() => {
             setDarkMode(!darkMode);
+            localStorage.setItem("Mode", JSON.stringify(!darkMode));
           }}
         >
           {darkMode ? (
