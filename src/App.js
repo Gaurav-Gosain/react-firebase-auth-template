@@ -2,8 +2,8 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { useDispatch } from "react-redux";
-import { login, logout } from "./features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, selectUser } from "./features/userSlice";
 import { auth } from "./firebase";
 import { db } from "./firebase";
 import Login from "./Pages/Login/Login";
@@ -68,10 +68,12 @@ function App() {
     });
   }, [dispatch]);
 
+  const user = useSelector(selectUser); 
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {JSON.parse(localStorage.getItem('userAuth'))===null ? ( // This is basically an if condition (ternary operator) which checks if the user exists (this user variable is fetched using useSelector which is a redux function to get the user if he is logged in)
+      {JSON.parse(localStorage.getItem('userAuth'))===null|| !user ? ( // This is basically an if condition (ternary operator) which checks if the user exists (this user variable is fetched using useSelector which is a redux function to get the user if he is logged in)
         <Login /> // The login component is called whenever the user attribute in the slice is false i.e. when the user is logged out<>
       ) : (
         <Home setDarkMode={setDarkMode} darkMode={darkMode} />
